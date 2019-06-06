@@ -30,7 +30,7 @@ public class StudentDAO implements GeneralDAO<Student> {
         try {
             Connection conn = CONN_WRAPPER.getConnection();
             Statement stmnt = conn.createStatement();
-            ResultSet result = stmnt.executeQuery("SELECT code, first_name, last_name, email, contact_phone, guardian FROM student");
+            ResultSet result = stmnt.executeQuery("SELECT code, first_name, last_name, email, contact_phone, guardian FROM students");
             while (result.next()) {
                 Student s = new Student();
                 s.setCode(result.getLong("code"));
@@ -59,7 +59,7 @@ public class StudentDAO implements GeneralDAO<Student> {
             //"SELECT * FROM student WHERE last_name = 'O';DROP TABLE student;--connor'"
             //Esto es usando PreparedStatement
             //"SELECT * FROM student WHERE code = ?"            
-            PreparedStatement stmnt = conn.prepareStatement("SELECT code, first_name, last_name, gender, email, contact_phone, guardian, birthday FROM student WHERE code = ?");
+            PreparedStatement stmnt = conn.prepareStatement("SELECT code, first_name, last_name, gender, email, contact_phone, guardian, birthday FROM students WHERE code = ?");
             stmnt.setLong(1, id);
 
             ResultSet result = stmnt.executeQuery();
@@ -86,7 +86,7 @@ public class StudentDAO implements GeneralDAO<Student> {
         try {
             Connection conn = CONN_WRAPPER.getConnection();
             PreparedStatement stmnt = conn.prepareStatement(
-                "INSERT INTO student"
+                "INSERT INTO students"
               + " (first_name, last_name, gender, email, contact_phone, guardian, birthday)"
               + " VALUES (?, ?, ?, ?, ?, ?, ?)"
             );
@@ -108,7 +108,7 @@ public class StudentDAO implements GeneralDAO<Student> {
         try {
             Connection conn = CONN_WRAPPER.getConnection();
             PreparedStatement stmnt = conn.prepareStatement(
-                "UPDATE student SET "
+                "UPDATE students SET "
               + " first_name = ?,"
               + " last_name = ?,"
               + " gender = ?,"
@@ -138,7 +138,7 @@ public class StudentDAO implements GeneralDAO<Student> {
             Connection conn = CONN_WRAPPER.getConnection();
             
             PreparedStatement stmnt = conn.prepareStatement(
-                    "DELETE FROM student WHERE code = ?"
+                    "DELETE FROM students WHERE code = ?"
             );
             stmnt.setLong(1, id);
             stmnt.executeUpdate();

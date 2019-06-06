@@ -1,4 +1,4 @@
-<%@page import="com.academik.mvc.utils.TimeUtils" %>
+ <%@page import="com.academik.mvc.utils.TimeUtils" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean 
     id="single_student" 
@@ -43,7 +43,7 @@
         <label for="s_contactPhone">Teléfono de contacto</label>
         <input class="form-control" type="text" name="s_contactphone" value="${single_student.contactPhone}"/>
     </div>
-    <input class="btn btn-primary" type="submit" value="Guardar"/>
+    <input class="btn btn-outline-primary" type="submit" value="Guardar"/>
 </form>
 
 <%@include file="../templates/footer.jsp" %>

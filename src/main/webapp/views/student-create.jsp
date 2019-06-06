@@ -16,17 +16,17 @@
         <div class="form-group">
             <label for="s_gender">Género</label>
             <select class="form-control" name="s_gender">
-                <option value="M">Masculino</option>
-                <option value="F">Femenino</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
             </select>
         </div>
         <div class="form-group">
             <label for="s_email">Correo electrónico</label>
-            <input class="form-control" type="text" name="s_email"/>
+            <input class="form-control" type="text" name="s_email" placeholder="email@example.com"/>
         </div>
         <div class="form-group">
             <label for="s_birthday">Fecha de nacimiento</label>
-            <input class="form-control" type="text" name="s_birthday"/>
+            <input class="form-control" type="text" name="s_birthday" placeholder="DD/MM/YYYY"/>
         </div>
         <div class="form-group">
             <label for="s_guardian">Encargado (a)</label>
@@ -34,9 +34,9 @@
         </div>
         <div class="form-group">
             <label for="s_contactphone">Teléfono de contacto</label>
-            <input class="form-control" type="text" name="s_contactphone"/>
+            <input class="form-control" type="text" name="s_contactphone" placeholder="0000-0000"/>
         </div>
-        <input class="btn btn-primary" type="submit" value="Crear"/>
+        <input class="btn btn-outline-primary" type="submit" value="Crear"/>
     </form>
 
 <%@include file="../templates/footer.jsp" %>
