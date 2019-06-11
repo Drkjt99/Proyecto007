@@ -15,15 +15,16 @@ import java.util.List;
  */
 public class CourseDAO implements GeneralDAO<Course> {
     
+    @Override
     public List<Course> queryAll(){
         List<Course> temp = new ArrayList<>();
         try {
             Connection conn = CONN_WRAPPER.getConnection();
             Statement stmnt = conn.createStatement();
-            ResultSet result = stmnt.executeQuery("SELECT code, name_course, description, credits FROM courses");
+            ResultSet result = stmnt.executeQuery("SELECT course_code, name_course, description, credits FROM courses");
             while (result.next()){
                 Course c = new Course();
-                c.setCode(result.getLong("code"));
+                c.setCode(result.getLong("course_code"));
                 c.setName(result.getString("name_course"));
                 c.setDescription(result.getString("description"));
                 c.setCredits(result.getString("credits"));
@@ -40,13 +41,13 @@ public class CourseDAO implements GeneralDAO<Course> {
         Course c = null;
         try{
             Connection conn = CONN_WRAPPER.getConnection();
-            PreparedStatement stmnt = conn.prepareStatement("SELECT code, name_course, description,credits FROM courses WHERE code = ?");
+            PreparedStatement stmnt = conn.prepareStatement("SELECT course_code, name_course, description,credits FROM courses WHERE course_code = ?");
             stmnt.setLong(1, id); 
             
             ResultSet result = stmnt.executeQuery();
             if (result.next()){
                 c = new Course();
-                c.setCode(result.getLong("code"));
+                c.setCode(result.getLong("course_code"));
                 c.setName(result.getString("name_course"));
                 c.setDescription(result.getString("description"));
                 c.setCredits(result.getString("credits"));
