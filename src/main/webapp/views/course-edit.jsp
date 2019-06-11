@@ -19,9 +19,11 @@
     <div class="form-group">
         <label for="c_descrition">Description</label>
         <input class="form-control" type="text" name="c_description" value="${single_course.description}"/>
+    </div>
     <div class="form-group">
         <label for="c_creditos">Creditos</label>
         <input class="form-control" type="text" name="c_creditos" value="${single_course.credits}"/>
+    </div>
     <input class="btn btn-outline-primary" type="submit" value="Guardar"/>
 </form>
 
