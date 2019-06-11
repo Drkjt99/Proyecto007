@@ -30,10 +30,10 @@ public class StudentDAO implements GeneralDAO<Student> {
         try {
             Connection conn = CONN_WRAPPER.getConnection();
             Statement stmnt = conn.createStatement();
-            ResultSet result = stmnt.executeQuery("SELECT code, first_name, last_name, email, contact_phone, guardian FROM students");
+            ResultSet result = stmnt.executeQuery("SELECT students_code, first_name, last_name, email, contact_phone, guardian FROM students");
             while (result.next()) {
                 Student s = new Student();
-                s.setCode(result.getLong("code"));
+                s.setCode(result.getLong("students_code"));
                 s.setFirstName(result.getString("first_name"));
                 s.setLastName(result.getString("last_name"));
                 s.setEmail(result.getString("email"));
@@ -59,13 +59,13 @@ public class StudentDAO implements GeneralDAO<Student> {
             //"SELECT * FROM student WHERE last_name = 'O';DROP TABLE student;--connor'"
             //Esto es usando PreparedStatement
             //"SELECT * FROM student WHERE code = ?"            
-            PreparedStatement stmnt = conn.prepareStatement("SELECT code, first_name, last_name, gender, email, contact_phone, guardian, birthday FROM students WHERE code = ?");
+            PreparedStatement stmnt = conn.prepareStatement("SELECT students_code, first_name, last_name, gender, email, contact_phone, guardian, birthday FROM students WHERE students_code = ?");
             stmnt.setLong(1, id);
 
             ResultSet result = stmnt.executeQuery();
             if (result.next()) {
                 s = new Student();
-                s.setCode(result.getLong("code"));
+                s.setCode(result.getLong("students_code"));
                 s.setFirstName(result.getString("first_name"));
                 s.setLastName(result.getString("last_name"));
                 s.setGender(result.getString("gender"));
