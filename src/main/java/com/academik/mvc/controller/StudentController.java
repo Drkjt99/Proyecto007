@@ -120,7 +120,7 @@ public class StudentController extends HttpServlet {
         edited.setBirthday(TimeUtils.getFromDDMMYYYY(req.getParameter("s_birthday")));
         
         //Utilizar el DAO para guardar la informacion en la base de datos
-        dao.edit(Integer.parseInt(req.getParameter("code")), edited);
+        dao.edit(Integer.parseInt(req.getParameter("students_code")), edited);
         resp.sendRedirect(req.getContextPath() + "/students");
     }
 
@@ -130,7 +130,7 @@ public class StudentController extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.err.println("Deleting student...");
-        long id = Long.parseLong(req.getParameter("code"));
+        long id = Long.parseLong(req.getParameter("students_code"));
         dao.delete(id);
         resp.sendRedirect(req.getContextPath() + "/students");
     }
