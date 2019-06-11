@@ -99,7 +99,7 @@ public class CourseController extends HttpServlet {
         edited.setDescription(req.getParameter("c_description"));
         edited.setCredits(req.getParameter("c_credits"));
         
-        dao.edit(Integer.parseInt(req.getParameter("code")), edited);
+        dao.edit(Integer.parseInt(req.getParameter("course_code")), edited);
         resp.sendRedirect(req.getContextPath() + "/courses" );
         
     }
@@ -107,7 +107,7 @@ public class CourseController extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.err.println("Deleting student....");
-        long id = Long.parseLong(req.getParameter("code"));
+        long id = Long.parseLong(req.getParameter("course_code"));
         dao.delete(id);
         resp.sendRedirect(req.getContextPath() + "/courses");
     } 
